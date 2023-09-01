@@ -1,3 +1,6 @@
 GROUP BY [ROLLUP, GROUPING SET, CUBE]
     https://velog.io/@dongchyeon/%EC%98%A4%EB%9D%BC%ED%81%B4Oracle-%EA%B7%B8%EB%A3%B9-%ED%95%A8%EC%88%98-ROLLUP-CUBE-GROUPING-%EB%93%B1
 
+계층형쿼리
+    https://grandma-coding.tistory.com/entry/Oracle-%EA%B3%84%EC%B8%B5%ED%98%95-%EC%BF%BC%EB%A6%AC-%EC%89%AC%EC%9A%B4-%EC%A0%95%EB%A6%ACSTART-WITH-CONNECT-BY
+
