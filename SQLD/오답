@@ -12,22 +12,22 @@ sql server vs oracle
     5. NULL타입 컬럼에 빈값('')으로 INSERT시 ORACLE은 NULL로 입력, SQL SERVER는 빈값('')
     6. 
 
-ALTER TABLE 테이블명 ADD CONSTRAINT : 제약조건 추가시 CONSTRAINT
+ALTER TABLE 테이블명 ADD CONSTRAINT : 제약조건 추가시 CONSTRAINT 써주어야 한다.
 
 ON DELETE CASCADE가 FK의 제약으로 잡혀있을때는 부모 테이블의 레코드가 삭제될 때 자식 테이블의 해당 레코드도 삭제된다는 것을 의미합니다.
     (외래 키 제약 조건)
     그 외에도 
     
-    DELETE OR MODIFY
+    ON DELETE OR MODIFY
     RESTRICT: 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드를 삭제, 업데이트하지 않습니다.
     CASCADE: 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드도 삭제, 업데이트합니다.
     SET NULL: 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드의 foreign_key 필드를 NULL로 설정합니다.
     SET DEFAULT : 부모 테이블의 레코드가 삭제, 업데이트될 때 필드 DEFAULT 값으로 설정
     NO ACTION: 부모 테이블의 레코드가 삭제, 업데이트될 때 오류가 발생합니다.
 
-    INSERT
-    DEPENDENT : 부모 테이블의 레코드가 존재할 때만 입력허용
-    AUTOMATIC : 
+    ON INSERT
+    DEPENDENT : 자식 삽입 시 부모 테이블에 pk가 존재할때만 자식에 삽입
+    AUTOMATIC : 자식 삽입 시 부모테이블에 pk 없으면 부모 pk 생성 후 자식에 삽입
     SET NULL: 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드의 foreign_key 필드를 NULL로 설정합니다.
     SET DEFAULT : 부모 테이블의 레코드가 삭제, 업데이트될 때 필드 DEFAULT 값으로 설정
     NO ACTION: 부모 테이블의 레코드가 삭제, 업데이트될 때 오류가 발생합니다.
@@ -42,7 +42,7 @@ ON DELETE CASCADE가 FK의 제약으로 잡혀있을때는 부모 테이블의 �
 
 count(*) vs count(컬럼명)의 차이점
     count(*)와 count(컬럼명)은 모두 SELECT문에서 사용되는 집계함수입니다.
-    count(*)는 테이블의 모든 행 수를 반환하고, count(컬럼명)은 컬럼의 값이 NULL이 아닌 행 수를 반환합니다.
+    count(*)는 테이블의 모든 행 수를 반환하고(NULL 포함), count(컬럼명)은 컬럼의 값이 NULL이 아닌 행 수를 반환합니다.
 
 VARCHAR2 타입 컬럼에 '1'처럼 넣는게 아니라 1이렇게 넣어도 정상적으로 수행이되나? (?)
 
@@ -82,15 +82,35 @@ TRUNCATE TABLE 과 DROP TABLE은 로그를 남기지 않는다.
         만족하는 고객의 목록이 변경되지 않은 것으로 인식할 수 있습니다. 트랜잭션 T1은 처음에 조건을 만족하는 고객이
         존재하는 것으로 나타났지만 실제로는 존재하지 않는 것으로 인식할 수 있습니다.
 
-    Dirty Read	            READ UNCOMMITTED, READ COMMITTED
-    Non-Repeatable Read	    READ COMMITTED, REPEATABLE READ
-    Phantom Read	        REPEATABLE READ, SERIALIZABLE
+    트랜잭션의 단계별 발생할 수 있는 문제
+        READ UNCOMMITTED: 가장 낮은 격리 수준으로, 트랜잭션이 커밋되지 않은 데이터를 읽을 수 있습니다.
+            이로 인해 Dirty Read, Non-Repeatable Read, Phantom Read와 같은 문제점이 발생할 수 있습니다.
+        READ COMMITTED: 트랜잭션이 커밋된 데이터만 읽을 수 있습니다. Dirty Read 문제점을 해결할 수 있지만,
+            Non-Repeatable Read와 Phantom Read 문제점은 여전히 발생할 수 있습니다.
+        REPEATABLE READ: 트랜잭션이 동일한 데이터를 반복해서 읽을 때마다 동일한 값을 읽을 수 있도록 보장합니다.
+            Non-Repeatable Read 문제점을 해결할 수 있습니다.
+        SERIALIZABLE: 트랜잭션이 동시에 실행되는 것을 방지하여 Phantom Read 문제점을 해결합니다.
+            가장 높은 격리 수준이지만, 성능이 가장 느립니다.
 
-    READ UNCOMMITTED: 가장 낮은 격리 수준으로, 트랜잭션이 커밋되지 않은 데이터를 읽을 수 있습니다.
-        이로 인해 Dirty Read, Non-Repeatable Read, Phantom Read와 같은 문제점이 발생할 수 있습니다.
-    READ COMMITTED: 트랜잭션이 커밋된 데이터만 읽을 수 있습니다. Dirty Read 문제점을 해결할 수 있지만,
-        Non-Repeatable Read와 Phantom Read 문제점은 여전히 발생할 수 있습니다.
-    REPEATABLE READ: 트랜잭션이 동일한 데이터를 반복해서 읽을 때마다 동일한 값을 읽을 수 있도록 보장합니다.
-        Non-Repeatable Read 문제점을 해결할 수 있습니다.
-    SERIALIZABLE: 트랜잭션이 동시에 실행되는 것을 방지하여 Phantom Read 문제점을 해결합니다.
-        가장 높은 격리 수준이지만, 성능이 가장 느립니다.
+다중행 함수도 단일행 함수와 동일하게 단일 값만을 반환한다.
+    다중행은 여러행을 대상으로 계산
+    단일행은 한가지 행을 대상으로 계산
+
+ORACLE에서 REPLACE는 인자값에 따라 역할이 달라진다.
+    인자 2개 A, B -> A에서 B제거
+    인자 3개 A, B, C -> A에서 B를 C로 대체
+
+ORACLE에서 LENGTH 사용시 CHR(10) : 줄바꿈 도 1로 카운트한다.
+
+SEARCHED_CASE_EXPRESSION : SELECT CASE WHEN LOC = 'NEW YORK' THEN 'EAST'
+VS
+SIMPLE_CASE_EXPRESSION   : SELECT CASE LOC WHEN 'NEW YORK' THEN 'EAST'
+
+0/300 = 0
+300/0 = 에러
+100/NULL = NULL
+
+GROUP BY에 안넣은컬럼을 SELECT문에 사용하고 싶을때는 MIN이나 MAX를 사용하기도 한다.
+
+SELECT 절에 없는 컬럼은 ORDER BY에 사용 불가
+
