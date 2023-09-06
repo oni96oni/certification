@@ -114,3 +114,15 @@ GROUP BY에 안넣은컬럼을 SELECT문에 사용하고 싶을때는 MIN이나 
 
 SELECT 절에 없는 컬럼은 ORDER BY에 사용 불가
 
+인덱스/옵티마이저
+    https://sy-log.tistory.com/77
+
+OLTP는 Online Transaction Processing의 약자로, "온라인 트랜잭션 처리"
+
+btree구조
+    https://rebro.kr/167
+
+조인수행원리
+    https://dataonair.or.kr/db-tech-reference/d-guide/sql/?mod=document&uid=356
+
+    
