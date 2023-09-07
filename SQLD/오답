@@ -4,6 +4,10 @@ GROUP BY [ROLLUP, GROUPING SET, CUBE]
 계층형쿼리
     https://grandma-coding.tistory.com/entry/Oracle-%EA%B3%84%EC%B8%B5%ED%98%95-%EC%BF%BC%EB%A6%AC-%EC%89%AC%EC%9A%B4-%EC%A0%95%EB%A6%ACSTART-WITH-CONNECT-BY
 
+    START WITH 절에서 필터링된 시작 데이터는 결과목록에 포함되어지며, 이후 CONNECT BY절에 의해 필터링 된다.
+
+    오라클 계층형 질의문에서 PRIOR 키워드는 SELECT, WHERE 절에서도 사용할 수 있다.
+    
 sql server vs oracle
     1. 컬럼 정보 수정시 oracle은 한번에 여러컬럼 수정가능, sql server는 한번에 한컬럼씩만 수정가능
     2. 컬럼 정보 수정시 oracle은 괄호사용 o, sql server는 괄호사용 x
@@ -125,4 +129,7 @@ btree구조
 조인수행원리
     https://dataonair.or.kr/db-tech-reference/d-guide/sql/?mod=document&uid=356
 
-    
+JOIN조건 WHERE조건의 차이점
+    테이블 연결대상과, 결과집합을 필터링하는것의 차이
+
+UNION ALL을 사용하는 경우 칼럼 ALIAS는 첫번째 SQL모듈 기준으로 표시
