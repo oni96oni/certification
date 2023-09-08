@@ -7,7 +7,7 @@ GROUP BY [ROLLUP, GROUPING SET, CUBE]
     START WITH 절에서 필터링된 시작 데이터는 결과목록에 포함되어지며, 이후 CONNECT BY절에 의해 필터링 된다.
 
     오라클 계층형 질의문에서 PRIOR 키워드는 SELECT, WHERE 절에서도 사용할 수 있다.
-    
+
 sql server vs oracle
     1. 컬럼 정보 수정시 oracle은 한번에 여러컬럼 수정가능, sql server는 한번에 한컬럼씩만 수정가능
     2. 컬럼 정보 수정시 oracle은 괄호사용 o, sql server는 괄호사용 x
@@ -23,18 +23,18 @@ ON DELETE CASCADE가 FK의 제약으로 잡혀있을때는 부모 테이블의 �
     그 외에도 
     
     ON DELETE OR MODIFY
-    RESTRICT: 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드를 삭제, 업데이트하지 않습니다.
-    CASCADE: 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드도 삭제, 업데이트합니다.
-    SET NULL: 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드의 foreign_key 필드를 NULL로 설정합니다.
+    RESTRICT    : 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드를 삭제, 업데이트하지 않습니다.
+    CASCADE     : 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드도 삭제, 업데이트합니다.
+    SET NULL    : 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드의 foreign_key 필드를 NULL로 설정합니다.
     SET DEFAULT : 부모 테이블의 레코드가 삭제, 업데이트될 때 필드 DEFAULT 값으로 설정
-    NO ACTION: 부모 테이블의 레코드가 삭제, 업데이트될 때 오류가 발생합니다.
+    NO ACTION   : 부모 테이블의 레코드가 삭제, 업데이트될 때 오류가 발생합니다.
 
     ON INSERT
-    DEPENDENT : 자식 삽입 시 부모 테이블에 pk가 존재할때만 자식에 삽입
-    AUTOMATIC : 자식 삽입 시 부모테이블에 pk 없으면 부모 pk 생성 후 자식에 삽입
-    SET NULL: 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드의 foreign_key 필드를 NULL로 설정합니다.
+    DEPENDENT   : 자식 삽입 시 부모 테이블에 pk가 존재할때만 자식에 삽입
+    AUTOMATIC   : 자식 삽입 시 부모테이블에 pk 없으면 부모 pk 생성 후 자식에 삽입
+    SET NULL    : 부모 테이블의 레코드가 삭제, 업데이트될 때 자식 테이블의 해당 레코드의 foreign_key 필드를 NULL로 설정합니다.
     SET DEFAULT : 부모 테이블의 레코드가 삭제, 업데이트될 때 필드 DEFAULT 값으로 설정
-    NO ACTION: 부모 테이블의 레코드가 삭제, 업데이트될 때 오류가 발생합니다.
+    NO ACTION   : 부모 테이블의 레코드가 삭제, 업데이트될 때 오류가 발생합니다.
 
 테이블 생성문에서 이미 PK를 지정하였으면 추후에 ALTER TABLE 문장에서 PK로 지정해주려고 할때 오류가 발생한다.
     NOT NULL로 설정하고 생성한 테이블 생성문 이후에 ALTER TABLE [테이블명] ALTER CONSTRAINT PK를 사용하는건 OK
@@ -48,7 +48,8 @@ count(*) vs count(컬럼명)의 차이점
     count(*)와 count(컬럼명)은 모두 SELECT문에서 사용되는 집계함수입니다.
     count(*)는 테이블의 모든 행 수를 반환하고(NULL 포함), count(컬럼명)은 컬럼의 값이 NULL이 아닌 행 수를 반환합니다.
 
-VARCHAR2 타입 컬럼에 '1'처럼 넣는게 아니라 1이렇게 넣어도 정상적으로 수행이되나? (?)
+VARCHAR2 타입 컬럼에 '1'처럼 넣는게 아니라 1이렇게 넣어도 정상적으로 수행이되나? (!)
+    안된다 문제 오타인듯하다.
 
 FK 제약조건이 걸린 부모테이블 컬럼을 삭제가 가능? (!)
     가능하다 단 자식테이블의 컬럼 값이 NOT NULL 이고 제약조건이 DELETE SET NULL 인경우에는 NULL로 세팅하려 하지만
@@ -116,7 +117,8 @@ SIMPLE_CASE_EXPRESSION   : SELECT CASE LOC WHEN 'NEW YORK' THEN 'EAST'
 
 GROUP BY에 안넣은컬럼을 SELECT문에 사용하고 싶을때는 MIN이나 MAX를 사용하기도 한다.
 
-SELECT 절에 없는 컬럼은 ORDER BY에 사용 불가
+SELECT 절에 없는 컬럼은 ORDER BY에 사용할 수 있다고한다.
+    하지만 인라인뷰에서 가져왔다면 그 뷰안에있는 컬럼만 사용가능하다.
 
 인덱스/옵티마이저
     https://sy-log.tistory.com/77
@@ -133,3 +135,12 @@ JOIN조건 WHERE조건의 차이점
     테이블 연결대상과, 결과집합을 필터링하는것의 차이
 
 UNION ALL을 사용하는 경우 칼럼 ALIAS는 첫번째 SQL모듈 기준으로 표시
+
+동작 방식에 따른 서브쿼리 분류
+    Un-Correlated (비 연관) 서브쿼리 : 서브쿼리가 메인쿼리 컬럼을 가지고 있지 않은 형태.
+        메인쿼리에 값을 제공하기 위한 목적으로 주로 사용된다.
+
+    Correlate(연관) 서브쿼리 : 서브쿼리가 메인쿼리 컬럼을 가지고 있는 형태.
+        일반적으로 메인쿼리가 먼저 수행되어 읽혀진 데이터를 서브쿼리에서 조건이 맞는지 확인하고자 할 때 주로 사용된다. 
+
+https://velog.io/@flobeeee/SQLD-SQL-%EC%9E%90%EA%B2%A9%EA%B2%80%EC%A0%95-%EC%8B%A4%EC%A0%84%EB%AC%B8%EC%A0%9C-%EC%98%A4%EB%8B%B5%EB%85%B8%ED%8A%B8-5.5
