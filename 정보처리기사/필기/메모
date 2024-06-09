@@ -536,5 +536,29 @@ JAVA
         1 : idx2
         2 : nx
     
+        버블정렬
+
     25.
-        
+        true
+        false
+        true
+        true
+    
+    26.
+        500
+
+        상속문제
+        부모 변수 x, 자식변수 this.x
+    
+    27.
+        BDCDD
+    
+    28.
+        재귀문제
+    
+    29.
+        static 메소드는 static 변수를 다루어야한다.
+
+예측문제
+    
+    01.
