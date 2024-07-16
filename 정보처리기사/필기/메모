@@ -877,12 +877,22 @@ SQL응용
         
         고립화 수준 종류
         
-            RU
-            RC
-            RR
-            SR
+            RU : Read Uncommitted
+            RC : Read Committed
+            RR : Reapetable Read
+            SR : Serialization Read
         
-        회복기법
-            REDO
+        회복기법 : DB 비정상적 종료시 수행
+            REDO : 트랜잭션 시작과 완료(commit)이 있는 트랜잭션들의 작업 재작업
                 
-            UNDO
+            UNDO : 트랜잭션 시작있으나 완료없는 트랜잭션들 작업내용 취소
+        
+            회로체그
+        
+    DDL
+        스키마 : DB구조, 제약조건등의 정보를 담고있는 구조
+            외부/개념/내부 로 구성
+
+            외부스키마 : 
+            개념스키마 : 전체적인 논리 구조
+            내부스키마 : 
