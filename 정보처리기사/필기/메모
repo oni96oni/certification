@@ -909,7 +909,7 @@ SQL응용
         지속성(영속성) : 성공된 트랜잭션의 결과는 영속적으로 db에 저장되어야함
         일관성 : 시스템이 가지고있는 고정요소는 트랜잭션 수행전과 후의 상태가 동일해야한다.
         원자성 : 하나라도 실패할 경우 전체취소
-        격리성 : 트랜잭션 실행중 생성하는 연산의 중간결과를 다른 트랜잭션이 접근불가
+        격리성(고립성) : 트랜잭션 실행중 생성하는 연산의 중간결과를 다른 트랜잭션이 접근불가
 
         원격일지
 
@@ -929,7 +929,7 @@ SQL응용
     
     05.
         트랜잭션의 순차적 진행을 보장하는 직렬화 기법은?
-        로킹
+        로킹(잠금)
 
     06. 
         200
@@ -953,11 +953,11 @@ SQL응용
                     2. 즉각갱신회복기법
     
     09.
-        CREATE [UNIQUE] INDEX IDX_NAME ON STUDENT(NAME);
+        CREATE INDEX IDX_NAME ON STUDENT(NAME);
 
     10.
         DELETE FROM 학생
-         WHERE 이름 = 민수
+         WHERE 이름 = '민수';
         
     11.
         인덱스
@@ -1015,7 +1015,7 @@ SQL응용
          WHERE 이름 = 민수
         
     23.
-        내부 : 물리적 저장 장치관
+        내부 : 물리적 저장 장치관점
         개념 : 전체적인관점
         외부 : 사용자나 개발자관점
 
@@ -1026,4 +1026,95 @@ SQL응용
         RESTRICT : 다른 테이블이 삭제할 테이블 참조중이면 제거X
     
     25.
-        
+        INSERT INTO 학생 VALUES ('9830287', '한국산', 3, '경영학개론', '050-1234-1234');
+
+    26.
+        A
+        4
+        3
+        2
+        1
+
+    예상문제
+    
+    1.
+        사용자나 개발자의 관점 : 외부
+        전체적인 논리구조 : 개념
+        물리적 저장관치관점 : 내부
+
+        외개내
+
+    2.
+        CREATE INDEX 사번인덱스 ON 사원(사번)
+    
+    3.
+        CREATE TABLE (
+            이름 VARCHAR(10)
+            성별 CHAR(1) CHECK IN ('M', 'F')
+        );
+
+    4.
+        ALTER TABLE 사원 ADD 전화번호 VARCHAR(11);
+
+        알테에
+
+    5.
+        CREATE VIEW 사원뷰 AS
+        SELECT 사번, 이름
+          FROM 사원
+         WHERE 성별 = 'M'
+    
+    6.
+        select distinct 전공
+          from 학생
+    
+    7.
+        select 학번
+          from 학생
+        where 이름 like '이%'
+    
+    8.
+        select 주소
+          from 학생
+         where 주소 is not null
+    
+    9.
+        select *
+          from 교수
+         where 전공 in ('컴퓨터공학', '전자공학')
+
+    10.
+        select 이름
+          from 고객
+         where 나이 between 50 and 59
+           and 성별 = '남'
+    
+    11.
+        select *
+          from 성적
+         order by 성적 desc
+    
+    12.
+        select a.책번호, a.책명, b.책번호, b.책명
+          from 도서 a
+          left outer join 도서가격 b
+            on b.책번호 = a.책번호
+    
+    13.
+        3
+    
+    14.
+        insert into 직원 values('홍길동', '24', '300');
+    
+    15.
+        delete from 직원
+         where 급여 <= 300
+    
+    16.
+        GRANT UPDATE ON 학생 TO 장길산
+
+        그온투
+
+    집계성 SQL
+
+    
