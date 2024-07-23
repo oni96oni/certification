@@ -1197,4 +1197,54 @@ SQL응용
         ALTER TABLE 사원 DROP 생년월일
     
     4.
-        
+        CREATE TABLE 사람 (
+            이름 VARCHAR(10),
+            생년월일 CHAR(10) NOT NULL
+        )
+    
+    5.
+        CREATE VIEW AS 
+        SELECT 학번, 이름
+          FROM 학생
+         WHERE 전공 = '전산'
+    
+    6.
+        CREATE INDEX 학번인덱스 ON 학생(학번)
+
+        크인온
+
+    7.  
+        CREATE TABLE 교수 (
+            교번 VARCHAR(10) PK,
+            이름 VARCHAR(10),
+            임용일 VARCHAR(8) NOT NULL
+        )
+
+    8.
+        ALTER TABLE 성적 ADD 학점 VARCHAR(4) NOT NULL
+    
+    9.
+        SELECT 학번,이름
+          FROM 학생
+         WHERE 학과 = '전산과'
+    
+    10.
+        3 6 11
+
+        11 ~ 17
+    
+    11.
+        SELECT 부서, SUM(급여)
+          FROM 급여
+         GROUP BY 부서
+        HAVING SUM(급여) >= 6000
+
+    12.
+        SELECT 이름, 과목, 학점
+          FROM 성적
+         ORDER BY 학점 DESC, 이름 
+
+    13.
+        SELECT 책번호, 책명, 가격
+          FROM 도서 A
+          
