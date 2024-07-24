@@ -1203,7 +1203,7 @@ SQL응용
         )
     
     5.
-        CREATE VIEW AS 
+        CREATE VIEW 학생뷰 AS 
         SELECT 학번, 이름
           FROM 학생
          WHERE 전공 = '전산'
@@ -1247,4 +1247,104 @@ SQL응용
     13.
         SELECT 책번호, 책명, 가격
           FROM 도서 A
-          
+          JOIN 도서가격 B
+            ON A.책번호 = B.책번호
+    
+    14.
+        SELECT 책번호, 책명, 가격
+          FROM 도서 A
+          FULL OUTER JOIN 도서가격 B
+            ON A.책번호 = B.책번호
+
+    15.
+        SELECT MAX(가격)
+          FROM 도서가격
+         WHERE 책번호 IN (
+            SELECT 책번호
+              FROM 도서
+             WHERE 책명 = '자료구조'
+         )
+    
+    16.
+        INSERT INTO 학생 ('3000', '장길산', '3', '수학')
+    
+    17.
+        UPDATE 학생
+           SET 수강과목 = '영어'
+         WHERE 학번 = '1000'
+    
+    18.
+        DELETE
+          FROM 학생
+         WHERE 학번 = '3000'
+        
+    19.
+        GRANT SELECT ON 사원 TO 홍길동
+    
+    20.
+        REVOKE UPDATE ON 학생 FROM 장길산
+    
+    21.
+        ㄱ : AVG(중간고사점수)
+        ㄴ : COUNT
+
+    22.
+        UPDATE EMPLOYEE
+           SET 급여 = '250'
+         WHERE 나이 <= 25
+    
+    23.
+        REVOKE SELECT ON 학생 FROM 홍길동
+    
+    24.
+        프로시저
+    
+    25.
+        트리거
+    
+    26.
+        1.규칙기반옵티마이저
+        2.비용기반옵티마이저
+    
+    27.
+        ㄱ : SUM(중간고사점수)
+        ㄴ : COUNT
+    
+    28.
+        OLAP
+
+서버프로그램
+
+    개발환경구축
+
+    기출문제
+
+    01.
+        형상통제
+        : 형상 항목의 형상 관리를 위해 형상 통제위원회(CCB)를 운영하며,
+            소프트웨어 변경의 요구, 평가, 승인이 이루어진다.
+        
+    02.
+        중앙집중형, 클라이언트-서버 형상관리 : SVN
+        오래된 형상관리 : CVS
+        로컬/원격 저장소로 분리 : GIT
+    
+    예상문제
+    01.
+        WAS서버 : 서버계층에서 애플리케이션 동작환경 제공
+        안정적인 트랜잭션 처리 및 관리
+    
+    02.
+        CCD : 형상 관리에 대한 주요 방침 설정
+    
+    03.
+        1 : RCS
+        2 : SVN (CVS도 클라이언트/서버 방식이다.)
+        3 : GIT
+    
+    04.
+        차등백업 : 마지막 백업 이후 변경된 모든 데이터
+            백업
+    
+모듈구현
+    
