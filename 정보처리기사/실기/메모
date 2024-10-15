@@ -172,5 +172,52 @@ VPN : 인터넷을 통해 디바이스 간에 사설 네트워크 연결을 생�
     -> BGP(Border Gateway Protocol)
 
 함수적 종속
-    
+    완전함수종속 : 기본키에 의해 결정
+    부분함수종속 : 기본키 일부로만 결정
+    이행적함수종속 : 기본키 외 다른 속성에 의해 결정
+
+RAID(Redundant Array of Independent Disks)는 여러 개의 하드 디스크를 병렬로 연결하여 성능을 향상시키고 데이터의 안정성을 확보하는 기술
+    RAID 0 (스트라이핑): 데이터를 여러 디스크에 분할하여 저장해 성능을 높이지만, 데이터 복제나 안정성이 없습니다.
+    RAID 1 (미러링): 데이터를 두 개 이상의 디스크에 복제하여 저장합니다.
+    RAID 5: 데이터를 여러 디스크에 분산하여 저장하고, 패리티(Parity) 정보를 이용
+    RAID 6: RAID 5 업그레이드 버전
+
+DBMS 회복기법
+    REDO : 성공적으로 완료된 트랜잭션의 변경 사항을 다시 적용(트랜잭션의 성공이지 오류가 안난다는것이 아니다.)
+    UNDO : 잘못된 작업이나 트랜잭션을 되돌리는 과정
+
+데이터베이스 이상현상
+    삭제이상 : 의도하지 않은 다른 데이터도 함께 삭제
+    갱신이상 : 여러 군데에 중복된 데이터를 모두 수정해야 하는 문제.
+    삽입이상 : 불필요한 중복 데이터를 함께 삽입
+
+블랙박스 : 외부에서 보이는 입력과 출력만을 기반으로 테스트
+    동등 분할(Equivalence Partitioning)
+    경계값 분석(Boundary Value Analysis)
+    결정 테이블 테스트(Decision Table Testing)
+    상태 전이 테스트(State Transition Testing)
+    원인-결과 그래프 테스트(Cause-Effect Graphing)
+
+화이트박스 : 코드 내부의 로직, 구조, 흐름을 분석하여 결함을 찾아내는 기법
+    문장 커버리지(Statement Coverage) : 구문커버리지라고도 한다.
+    분기 커버리지(Branch Coverage)
+    조건 커버리지(Condition Coverage)
+    경로 커버리지(Path Coverage)
+    루프 커버리지(Loop Coverage)
+    데이터 흐름 커버리지(Data Flow Coverage)
+
+슈퍼키 : 유일성
+후보기 : 유일성 + 최소성
+
+알파테스트의 종류
+    단위(모듈검증) -> 통합(인터페이스) -> 시스템(요구분석) -> 인수
+
+OSI 7 Layer
+    물리(physical) : 
+    데이터링크(datalink) : MAC
+    네트워크(network) : IP
+    전송(transport) : TCP/UDP
+    세션(session) : 
+    표현(presentation) : 응용계층으로부터 전달받거나 전송하는 데이터의 인코딩(언어처리) 및 디코딩
+    응용(application) :
 
