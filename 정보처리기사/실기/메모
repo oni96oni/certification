@@ -8,17 +8,11 @@ JAVA
     seen[c] = true;  // seen[97] = true; 와 동일하게 동작
 
     boolean은 생성후 별도로 값을 할당하지 않으면 false가 된다.
-
-    2024년 실기 2회차 17번문제 정답 abcd인것같은데 왜 dcba라고 하지?
-        https://chobopark.tistory.com/483#google_vignette
     
     split()에 구분자로 들어가는 값은 구분자로만 쓰인다. 짜르는값에 들어가지않음
 
 C
     IF문안에 0은 FALSE, 나머지 정수는 모두 TRUE
-
-    https://chobopark.tistory.com/476
-        2번문제 정답 이상한것 같은데 169인것 같은데 왜 151이지?
 
     변수앞 * 은 포인터변수임을 나타냄
 
@@ -36,8 +30,8 @@ C
     C 언어에서 기본적으로 함수의 매개변수는 값에 의한 전달(pass by value) 방식으로 처리
 
 페이지 부재란 메모리에 참조하는 값이 없을때 할당하면 발생한다.
-    LRU(Least Frequently Used) : 가장 오랫동안 참조되지 않은 페이지를 제거
-    LFU(Least Recently Used) : 페이지 교체가 필요할 때 가장 적게 참조된 페이지를 제거합니다. 
+    LRU(Least Recently Used) : 가장 오랫동안 참조되지 않은 페이지를 제거
+    LFU(Least Frequently Used) : 페이지 교체가 필요할 때 가장 적게 참조된 페이지를 제거합니다. 
     (새로운게 들어와야하니 무조건적으로 하나가 제거된다.)
     
 애플리케이션 테스트 관리 : 구결조변다경조
@@ -107,7 +101,8 @@ DES (Data Encryption Standard): 56비트 키를 사용하여 64비트 블록을 
 AES (Advanced Encryption Standard): 128비트 블록 크기와 128, 192, 256비트 키를 사용하는 대칭키 암호화 알고리즘으로, 현재 가장 널리 사용되는 표준.
 ARIA: 128비트 블록 크기를 가지며 128, 192, 256비트 키를 사용하는 대칭키 암호화 알고리즘으로, 한국의 국가 표준으로 채택됨.
 SEED: 128비트 블록과 128비트 키를 사용하는 대칭키 알고리즘으로, 한국에서 개발되었으며, 신뢰성과 성능이 뛰어남.
-IDEA: Xuejia Lai와 James Messey 가 만든 알고리즘으로 PES(Proposed Encryption Standard)에서 IPES(Improved PES)로 변경되었다가, 1991년에 제작된 블록 암호 알고리즘으로 현재 국제 데이터 암호화 알고리즘으로 사용되고 있다. 64비트 블록을 128비트의 key를 이용하여 8개의 라운드로 구성되어 있다.
+IDEA: Xuejia Lai와 James Messey 가 만든 알고리즘으로 PES(Proposed Encryption Standard)에서 IPES(Improved PES)로 변경되었다가, 1991년에 제작된 블록 암호 알고리즘으로
+    현재 국제 데이터 암호화 알고리즘으로 사용되고 있다. 64비트 블록을 128비트의 key를 이용하여 8개의 라운드로 구성되어 있다.
 SKIPJACK: 미국의 NSA에서 개발한 Clipper 칩에 내장되는 블록 알고리즘이다. 전화기와 같은 음성을 암호화 하는데 주로 사용되며 64비트 입출력에 80비트의 키 총 32라운드를 가진다.
 
 비대칭키 암호화 알고리즘
